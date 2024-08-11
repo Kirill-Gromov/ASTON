@@ -1,24 +1,24 @@
 package DZ.Junit_Testing;
 
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import org.testng.annotations.Test;
+import static org.testng.Assert.*;
 
 public class FactorialCalculatorTest {
 
     @Test
     public void testCalculateFactorial() {
-        assertEquals(1, FactorialCalculator.calculateFactorial(0));
-        assertEquals(1, FactorialCalculator.calculateFactorial(1));
-        assertEquals(2, FactorialCalculator.calculateFactorial(2));
-        assertEquals(6, FactorialCalculator.calculateFactorial(3));
-        assertEquals(24, FactorialCalculator.calculateFactorial(4));
-        assertEquals(120, FactorialCalculator.calculateFactorial(5));
+        assertEquals(FactorialCalculator.calculateFactorial(0), 1);
+        assertEquals(FactorialCalculator.calculateFactorial(1), 1);
+        assertEquals(FactorialCalculator.calculateFactorial(2), 2);
+        assertEquals(FactorialCalculator.calculateFactorial(3), 6);
+        assertEquals(FactorialCalculator.calculateFactorial(4), 24);
+        assertEquals(FactorialCalculator.calculateFactorial(5), 120);
     }
 
-    @Test
+    @Test(expectedExceptions = IllegalArgumentException.class)
     public void testCalculateFactorialWithNegativeNumber() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            FactorialCalculator.calculateFactorial(-1);
-        });
+        FactorialCalculator.calculateFactorial(-1);
     }
 }
+
+
